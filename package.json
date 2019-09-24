@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "license": "MIT",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "repository": "github:mgraczyk/redux-url-store",
   "homepage": "https://github.com/mgraczyk/redux-url-store",
   "keywords": [
@@ -15,10 +15,9 @@
   "author": "Michael Graczyk <michael@mgraczyk.com>",
   "scripts": {
     "clean": "rimraf lib dist es",
-    "prepare": "npm run clean && npm run lint && npm run test && npm run build",
-    "lint": "eslint src test",
+    "lint": "eslint src",
     "test": "cross-env BABEL_ENV=commonjs mocha --require @babel/register --reporter spec test/*.js",
-    "build": "npm run build:commonjs && npm run build:umd && npm run build:umd:min && npm run build:es",
+    "build": "yarn run build:commonjs && yarn run build:umd && yarn run build:umd:min && yarn run build:es",
     "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib",
     "build:es": "cross-env BABEL_ENV=es babel src --out-dir es",
     "build:umd": "cross-env BABEL_ENV=commonjs NODE_ENV=development npx webpack",
@@ -35,5 +34,22 @@
   },
   "dependencies": {
     "react-redux": "^7.1.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.6.2",
+    "@babel/core": "^7.6.2",
+    "@babel/preset-env": "^7.6.2",
+    "@babel/register": "^7.6.2",
+    "babel-eslint": "^10.0.3",
+    "babel-loader": "^8.0.6",
+    "cross-env": "^6.0.0",
+    "eslint": "^6.4.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-react": "^7.14.3",
+    "prettier": "^1.18.2",
+    "webpack-cli": "^3.3.9"
   }
 }

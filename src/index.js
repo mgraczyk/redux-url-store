@@ -1,7 +1,7 @@
 const _STATE_PARAM_KEY = '__rus';
 const _INIT_ACTION_TYPE = 'REACT_URL_STORE_INIT';
 
-const sleep = ms => new Promise(r => setTimeout(r, ms));
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 // Wraps a function and forwards results to a callback.
 // Drops pending calls when a new call comes in,
@@ -14,7 +14,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
 // await f ----???-----??x-?x-----???---
 //                \                  \
 //      cb -----------------------------
-const withEagerLatestRace = (f, cb, limitMs=300) => {
+const withEagerLatestRace = (f, cb, limitMs = 300) => {
   let ctr = 0;
   let tLast = 0;
   return async (...args) => {
@@ -33,7 +33,7 @@ const withEagerLatestRace = (f, cb, limitMs=300) => {
     if (ctr === myCtr) {
       cb(result, args);
     }
-  }
+  };
 };
 
 // TODO: Fix for non-ascii.
@@ -66,9 +66,9 @@ function loadInitialState() {
   return decodeState(urlParams.get(_STATE_PARAM_KEY)) || {};
 }
 
-function createUrlStoreMiddleware(timeoutMs=500) {
+function createUrlStoreMiddleware(timeoutMs = 500) {
   return ({ dispatch, getState }) => (next) => {
-    let maybeUpdateStore = withEagerLatestRace(
+    const maybeUpdateStore = withEagerLatestRace(
       () => {},
       () => {
         putStateInUrl(getState());
