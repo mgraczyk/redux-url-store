@@ -63,7 +63,6 @@ function putStateInUrl(state) {
 
 function loadInitialState() {
   const urlParams = new URLSearchParams(window.location.search);
-  console.log(urlParams);
   return decodeState(urlParams.get(_STATE_PARAM_KEY)) || {};
 }
 
