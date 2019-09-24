@@ -1,0 +1,39 @@
+{
+  "name": "redux-url-store",
+  "version": "0.1.0",
+  "license": "MIT",
+  "description": "",
+  "main": "index.js",
+  "repository": "github:mgraczyk/redux-url-store",
+  "homepage": "https://github.com/mgraczyk/redux-url-store",
+  "keywords": [
+    "redux",
+    "store",
+    "url",
+    "redux-middleware"
+  ],
+  "author": "Michael Graczyk <michael@mgraczyk.com>",
+  "scripts": {
+    "clean": "rimraf lib dist es",
+    "prepare": "npm run clean && npm run lint && npm run test && npm run build",
+    "lint": "eslint src test",
+    "test": "cross-env BABEL_ENV=commonjs mocha --require @babel/register --reporter spec test/*.js",
+    "build": "npm run build:commonjs && npm run build:umd && npm run build:umd:min && npm run build:es",
+    "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib",
+    "build:es": "cross-env BABEL_ENV=es babel src --out-dir es",
+    "build:umd": "cross-env BABEL_ENV=commonjs NODE_ENV=development npx webpack",
+    "build:umd:min": "cross-env BABEL_ENV=commonjs NODE_ENV=production npx webpack"
+  },
+  "prettier": {
+    "arrowParens": "always",
+    "proseWrap": "always",
+    "singleQuote": true,
+    "trailingComma": "all"
+  },
+  "peerDependencies": {
+    "redux": "^4"
+  },
+  "dependencies": {
+    "react-redux": "^7.1.1"
+  }
+}

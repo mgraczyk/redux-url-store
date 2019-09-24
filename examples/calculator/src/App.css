@@ -1,0 +1,34 @@
+.App {
+  padding: 1em 2em;
+  width: 100%;
+  margin: auto;
+}
+
+.App-title {
+  width: 100%;
+  font-size: 3em;
+  margin-bottom: 1em;
+}
+
+input:not(:focus) {
+  background: unset;
+  border-style: solid;
+  border-color: #00000000;
+  outline: unset;
+}
+
+.App-formula {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.App-formula > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.App-formula > div > span{
+  margin-right: 1em;
+  flex: 0 1;
+}
